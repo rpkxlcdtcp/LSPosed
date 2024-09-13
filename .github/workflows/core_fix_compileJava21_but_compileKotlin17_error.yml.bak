@@ -89,6 +89,8 @@ jobs:
 
       - name: Build with Gradle
         run: |
+          echo "JAVA_HOME=${JAVA_HOME}"
+          echo "PATH=${PATH}"
           ./gradlew zipAll
 
       - name: Prepare artifact
