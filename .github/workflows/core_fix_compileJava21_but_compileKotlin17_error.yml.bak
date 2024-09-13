@@ -56,7 +56,9 @@ jobs:
         uses: actions/setup-java@v3
         with:
           distribution: "temurin"
-          java-version: "17"
+          java-version: |
+            "21"
+            "17"
 
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
@@ -73,11 +75,13 @@ jobs:
 
       - name: Build dependencies
         working-directory: libxposed
-        uses: actions/setup-java@v3
-          with:
-            distribution: "temurin"
-            java-version: "21"
         run: |
+          echo "调试开始"
+          echo "=== env ==="
+          env
+          echo "=== set ==="
+          set
+          echo "调试结束"
           echo 'org.gradle.caching=true' >> ~/.gradle/gradle.properties
           echo 'org.gradle.parallel=true' >> ~/.gradle/gradle.properties
           echo 'org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8 -XX:+UseParallelGC' >> ~/.gradle/gradle.properties
