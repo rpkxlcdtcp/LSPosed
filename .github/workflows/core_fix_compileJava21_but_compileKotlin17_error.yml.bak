@@ -82,6 +82,7 @@ jobs:
           echo "=== set ==="
           set
           echo "调试结束"
+          exit 123
           echo 'org.gradle.caching=true' >> ~/.gradle/gradle.properties
           echo 'org.gradle.parallel=true' >> ~/.gradle/gradle.properties
           echo 'org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8 -XX:+UseParallelGC' >> ~/.gradle/gradle.properties
