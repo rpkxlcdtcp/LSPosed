@@ -78,23 +78,20 @@ jobs:
         run: |
           export JAVA_HOME="${JAVA_HOME_21_X64}"
           export PATH="${JAVA_HOME}/bin:${PATH}"
-          env
-          ls -A -l
-          id
           echo 'org.gradle.caching=true' >> ~/.gradle/gradle.properties
           echo 'org.gradle.parallel=true' >> ~/.gradle/gradle.properties
           echo 'org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8 -XX:+UseParallelGC' >> ~/.gradle/gradle.properties
           echo 'android.native.buildOutput=verbose' >> ~/.gradle/gradle.properties
           cd api
+          ls -l -p --full-time
           ./gradlew publishToMavenLocal
           cd ../service
+          ls -l -p --full-time
           ./gradlew publishToMavenLocal
 
       - name: Build with Gradle
         run: |
-          env
-          ls -A -l
-          id
+          ls -l -p --full-time
           ./gradlew zipAll
 
       - name: Prepare artifact

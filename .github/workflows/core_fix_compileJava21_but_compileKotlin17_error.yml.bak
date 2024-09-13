@@ -76,7 +76,7 @@ jobs:
       - name: Build dependencies
         working-directory: libxposed
         run: |
-          export JAVA_HOME="${{ env.JAVA_HOME_21_X64 }}"
+          export JAVA_HOME="${JAVA_HOME_21_X64}"
           export PATH="${JAVA_HOME}/bin:${PATH}"
           echo 'org.gradle.caching=true' >> ~/.gradle/gradle.properties
           echo 'org.gradle.parallel=true' >> ~/.gradle/gradle.properties
@@ -89,8 +89,9 @@ jobs:
 
       - name: Build with Gradle
         run: |
-          echo "JAVA_HOME=${JAVA_HOME}"
-          echo "PATH=${PATH}"
+          env
+          ls -A -l
+          id
           ./gradlew zipAll
 
       - name: Prepare artifact
