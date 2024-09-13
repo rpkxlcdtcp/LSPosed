@@ -57,8 +57,8 @@ jobs:
         with:
           distribution: "temurin"
           java-version: |
-            "21"
-            "17"
+            21
+            17
 
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
@@ -77,10 +77,12 @@ jobs:
         working-directory: libxposed
         run: |
           echo "调试开始"
-          echo "=== env ==="
-          env
-          echo "=== set ==="
+          java -version
+          ${{ env.JAVA_HOME_21_X64 }}
+          java -version
+          echo "=== < set ==="
           set
+          echo "=== set > ==="
           echo "调试结束"
           exit 123
           echo 'org.gradle.caching=true' >> ~/.gradle/gradle.properties
