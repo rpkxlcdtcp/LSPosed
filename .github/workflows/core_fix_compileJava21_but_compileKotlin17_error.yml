@@ -58,12 +58,6 @@ jobs:
           distribution: "temurin"
           java-version: "17"
 
-      - name: Setup Java
-        uses: actions/setup-java@v3
-        with:
-          distribution: "temurin"
-          java-version: "21"
-
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
         with:
@@ -78,6 +72,10 @@ jobs:
           save: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
 
       - name: Build dependencies
+      - uses: actions/setup-java@v3
+        with:
+          distribution: "temurin"
+          java-version: "21"
         working-directory: libxposed
         run: |
           echo 'org.gradle.caching=true' >> ~/.gradle/gradle.properties
