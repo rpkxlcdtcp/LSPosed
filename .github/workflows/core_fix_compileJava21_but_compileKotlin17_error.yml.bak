@@ -72,11 +72,11 @@ jobs:
           save: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
 
       - name: Build dependencies
+        working-directory: libxposed
       - uses: actions/setup-java@v3
         with:
           distribution: "temurin"
           java-version: "21"
-      - working-directory: libxposed
       - run: |
           echo 'org.gradle.caching=true' >> ~/.gradle/gradle.properties
           echo 'org.gradle.parallel=true' >> ~/.gradle/gradle.properties
